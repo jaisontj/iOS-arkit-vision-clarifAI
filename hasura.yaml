@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 description: An example to iOS ArKit and Vision API using ClarifAI to do image recognition
   and a nodejs-express service running on Hasura to fetch details about the celebrity
   identified in the image
@@ -8,3 +9,9 @@ media:
   - https://github.com/jaisontj/iOS-arkit-vision-clarifAI/blob/master/assets/eminem.jpeg
 name: iOS-arkit-vision-clarifai
 platformVersion: v0.15.18
+=======
+description: Blank template for a Hasura project
+keywords: base, getting-started
+name: base
+platformVersion: v0.15.3
+>>>>>>> base/master
