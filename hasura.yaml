@@ -5,6 +5,7 @@ gitUrl: https://github.com/jaisontj/iOS-arkit-vision-clarifAI
 keywords: javascript, nodejs, express, node, iOS, Arkit, Vision API, ClarifAI
 media:
   images:
-  - https://github.com/jaisontj/iOS-arkit-vision-clarifAI/blob/master/assets/eminem.jpeg
+  - https://raw.githubusercontent.com/jaisontj/iOS-arkit-vision-clarifAI/master/assets/arkit_demo.gif
+  - https://raw.githubusercontent.com/jaisontj/iOS-arkit-vision-clarifAI/master/assets/eminem.jpeg
 name: iOS-arkit-vision-clarifai
 platformVersion: v0.15.18
