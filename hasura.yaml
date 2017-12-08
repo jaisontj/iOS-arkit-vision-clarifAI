@@ -2,6 +2,7 @@ description: An example to iOS ArKit and Vision API using ClarifAI to do image r
   and a nodejs-express service running on Hasura to fetch details about the celebrity
   identified in the image
 keywords: javascript, nodejs, express, node, iOS, Arkit, Vision API, ClarifAI
+gitUrl: https://github.com/jaisontj/iOS-arkit-vision-clarifAI
 media:
   images:
   - https://github.com/jaisontj/iOS-arkit-vision-clarifAI/blob/master/assets/arkit_demo.gif
