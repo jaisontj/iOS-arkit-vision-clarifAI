@@ -16,7 +16,13 @@ class HasuraApiHelper {
     static let CLUSTER_NAME = "dualism63"
     
     func getCelebDob(name: String, callback: @escaping(String?, Error?) -> Void) {
-        Alamofire.request("https://api." + HasuraApiHelper.CLUSTER_NAME + ".hasura-app.io/celeb_dob?name=" + name)
+        Alamofire.request(
+            "https://api." + HasuraApiHelper.CLUSTER_NAME + ".hasura-app.io/celeb_dob",
+            method: .get,
+            parameters: [
+                "name": name
+            ],
+            encoding: URLEncoding.default)
             .validate()
             .responseJSON { (response) in
                 switch response.result {

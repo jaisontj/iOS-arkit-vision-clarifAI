@@ -41,7 +41,7 @@ class Face {
             if let name = name {
                 HasuraApiHelper.sharedInstance.getCelebDob(name: name) { (dob, error) in
                     if let dob = dob {
-                        self.node.textView.string = name + "-" + dob
+                        self.node.textView.string = name + "(" + dob + ")"
                         self.name = name
                     } else {
                         print("Hasura API Failed")
