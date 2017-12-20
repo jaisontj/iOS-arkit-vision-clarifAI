@@ -39,8 +39,16 @@ class Face {
         //Fetch name from clarifAi
         ClarifAIHelper.sharedInstance.celebName(image: self.node.nodeImage) { (name, error) in
             if let name = name {
-                self.node.textView.string = name
-                self.name = name
+                HasuraApiHelper.sharedInstance.getCelebDob(name: name) { (dob, error) in
+                    if let dob = dob {
+                        self.node.textView.string = name + "-" + dob
+                        self.name = name
+                    } else {
+                        print("Hasura API Failed")
+                        print(error ?? "Unable to print error")
+                        self.node.textView.string = name
+                    }
+                }
             } else {
                 print("ClarifAi failed")
                 print(error ?? "Unable to print error")

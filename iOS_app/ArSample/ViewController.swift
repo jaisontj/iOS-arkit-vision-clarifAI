@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         bounds = sceneView.bounds
-
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,10 +44,9 @@ class ViewController: UIViewController {
 
         // Run the view's session
         sceneView.session.run(sceneViewConfig)
-        
-//        currentFrameTimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(self.detectFace), userInfo: nil, repeats: true)
+
         updateNodeTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateNodes), userInfo: nil, repeats: true)
-        
+
         let tapRecog = UITapGestureRecognizer(target: self, action: #selector(self.detectFace))
         sceneView.addGestureRecognizer(tapRecog)
     }
@@ -65,7 +64,7 @@ class ViewController: UIViewController {
 extension ViewController {
     
     @objc func updateNodes() {
-        self.faces.filter{ $0.updated.isAfter(seconds: 5) && !$0.hidden }.forEach{ face in
+        self.faces.filter{ $0.updated.isAfter(seconds: 30) && !$0.hidden }.forEach{ face in
             print("Hide node: \(String(describing: face.name))")
             DispatchQueue.main.async {
                 face.node.hide()
@@ -74,35 +73,33 @@ extension ViewController {
     }
     
     @objc func detectFace() {
-        DispatchQueue.global().async {
-            // Create and rotate image
-            guard let frame = self.sceneView.session.currentFrame else {
+        // Create and rotate image
+        guard let frame = self.sceneView.session.currentFrame else {
+            return
+        }
+        let image = CIImage.init(cvPixelBuffer: frame.capturedImage).rotate
+        let facesRequest = VNDetectFaceRectanglesRequest { request, error in
+            guard error == nil else {
+                print("Face request error: \(error!.localizedDescription)")
                 return
             }
-            let image = CIImage.init(cvPixelBuffer: frame.capturedImage).rotate
-            let facesRequest = VNDetectFaceRectanglesRequest { request, error in
-                guard error == nil else {
-                    print("Face request error: \(error!.localizedDescription)")
-                    return
-                }
-                
-                guard let observations = request.results as? [VNFaceObservation] else {
-                    print("No face observations")
-                    return
-                }
-                
-                // Map response
-                let allResponses = observations.map({ (face) -> (observation: VNFaceObservation, image: CIImage, frame: ARFrame) in
-                    return (observation: face, image: image, frame: frame)
-                })
-                
-                for response in allResponses {
-                    print("Detected faces: \(allResponses.count)")
-                    self.classifyFace(face: response.observation, image: response.image, frame: response.frame)
-                }
+            
+            guard let observations = request.results as? [VNFaceObservation] else {
+                print("No face observations")
+                return
             }
-            try? VNImageRequestHandler(ciImage: image).perform([facesRequest])
+            
+            // Map response
+            let allResponses = observations.map({ (face) -> (observation: VNFaceObservation, image: CIImage, frame: ARFrame) in
+                return (observation: face, image: image, frame: frame)
+            })
+            
+            for response in allResponses {
+                print("Detected faces: \(allResponses.count)")
+                self.classifyFace(face: response.observation, image: response.image, frame: response.frame)
+            }
         }
+        try? VNImageRequestHandler(ciImage: image).perform([facesRequest])
     }
     
     func classifyFace(face: VNFaceObservation, image: CIImage, frame: ARFrame) {
@@ -128,7 +125,6 @@ extension ViewController {
     
     
     private func updateNode(celebName: String, image: UIImage, position: SCNVector3, frame: ARFrame) {
-        
         
         // Filter for existent face
         let results = self.faces.filter {

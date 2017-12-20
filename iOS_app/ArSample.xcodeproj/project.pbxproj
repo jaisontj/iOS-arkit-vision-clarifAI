@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB4EC0737AA7EEC3B696FBBA /* Pods_ArSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3920A62E3E779950F9FEAC50 /* Pods_ArSample.framework */; };
+		DA43F24B1FE92EFF004DE634 /* HasuraApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA43F24A1FE92EFF004DE634 /* HasuraApiHelper.swift */; };
 		DAD7A1161FD137C600AED367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7A1151FD137C600AED367 /* AppDelegate.swift */; };
 		DAD7A1181FD137C600AED367 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD7A1171FD137C600AED367 /* art.scnassets */; };
 		DAD7A11A1FD137C600AED367 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7A1191FD137C600AED367 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		3920A62E3E779950F9FEAC50 /* Pods_ArSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8163A2676B25CFA855410358 /* Pods-ArSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArSample/Pods-ArSample.release.xcconfig"; sourceTree = "<group>"; };
+		DA43F24A1FE92EFF004DE634 /* HasuraApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasuraApiHelper.swift; sourceTree = "<group>"; };
 		DAD7A1121FD137C600AED367 /* ArSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7A1151FD137C600AED367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAD7A1171FD137C600AED367 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				DAD7A12B1FD14B0F00AED367 /* Face.swift */,
 				DAD7A12D1FD14B2000AED367 /* Extension.swift */,
 				DAD7A12F1FD29F8D00AED367 /* FaceNode.swift */,
+				DA43F24A1FE92EFF004DE634 /* HasuraApiHelper.swift */,
 			);
 			path = ArSample;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA43F24B1FE92EFF004DE634 /* HasuraApiHelper.swift in Sources */,
 				DAD7A12E1FD14B2000AED367 /* Extension.swift in Sources */,
 				DAD7A12C1FD14B0F00AED367 /* Face.swift in Sources */,
 				DAD7A1301FD29F8D00AED367 /* FaceNode.swift in Sources */,

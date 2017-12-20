@@ -38,7 +38,7 @@ class ClarifAIHelper {
         ]
         
         let requestHeaders: HTTPHeaders = [
-            "Authorization": "Key a34ae125f08b489c843f1779f5bbbaae",
+            "Authorization": "Key d1291e7223fa40b1b5146de0b6f63317",
             "Content-Type": "application/json"
         ]
         
@@ -107,7 +107,7 @@ class ClarifAIHelper {
                     if let matchedConcept = matchedConcept {
                         if let matchValue = matchedConcept["value"] as? Float {
                             //Returns only if matched value is > 0.8
-                            if matchValue > 0.8 {
+                            if matchValue > 0.5 {
                                 completion(matchedConcept["name"] as? String, nil)
                                 return
                             }
