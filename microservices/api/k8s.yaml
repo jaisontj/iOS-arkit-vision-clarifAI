@@ -20,6 +20,12 @@ items:
       spec:
         containers:
         - image: hasura/hello-world:latest
+          env:
+          - name: MDB_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: mdb.api.token
+                name: hasura-secrets
           imagePullPolicy: IfNotPresent
           name: api
           ports:
